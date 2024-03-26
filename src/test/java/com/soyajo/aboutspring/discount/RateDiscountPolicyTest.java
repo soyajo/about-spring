@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class RateDiscountPolicyTest {
 
 
-    RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
+    DiscountPolicy discountPolicy;
 
     @BeforeEach
     public void beforeEach() {
         AppConfig appConfig = new AppConfig();
-
+        discountPolicy = appConfig.discountPolicy();
     }
 
 
