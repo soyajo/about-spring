@@ -1,5 +1,9 @@
 package com.soyajo.aboutspring.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
 
     // 역할과 구현을 둘 다 의존 한다. 추상화, 구현 부분 - DIP 위반
@@ -12,6 +16,11 @@ public class MemberServiceImpl implements MemberService{
      */
     private final MemberRepository memberRepository;
 
+    /**
+     * 의존관계 자동 생성자 주입
+     * @param memberRepository
+     */
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

@@ -6,7 +6,10 @@ import com.soyajo.aboutspring.discount.RateDiscountPolicy;
 import com.soyajo.aboutspring.member.Member;
 import com.soyajo.aboutspring.member.MemberRepository;
 import com.soyajo.aboutspring.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
 
@@ -29,6 +32,12 @@ public class OrderServiceImpl implements OrderService {
     private MemberRepository memberRepository;
     private DiscountPolicy discountPolicy;
 
+    /**
+     * 의존관계 자동 생성자 주입
+     * @param memberRepository
+     * @param discountPolicy
+     */
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
