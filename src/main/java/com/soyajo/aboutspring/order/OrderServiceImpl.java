@@ -6,12 +6,15 @@ import com.soyajo.aboutspring.discount.RateDiscountPolicy;
 import com.soyajo.aboutspring.member.Member;
 import com.soyajo.aboutspring.member.MemberRepository;
 import com.soyajo.aboutspring.member.MemoryMemberRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor // lombok 생성자 주입
 public class OrderServiceImpl implements OrderService {
-
 
 
     /**
@@ -29,19 +32,19 @@ public class OrderServiceImpl implements OrderService {
      * AppConfig 쪽에서  구현 객체를 생성
      * 생성자 주입
      */
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
     /**
      * 의존관계 자동 생성자 주입
      * @param memberRepository
      * @param discountPolicy
      */
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
